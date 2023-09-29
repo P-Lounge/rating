@@ -1,7 +1,6 @@
 body {
     background-image: url("../../src/dialog.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     user-select: none;
 }
 
@@ -40,16 +39,21 @@ img.return {
     margin: auto;
 }
 
-table.rating {
+div.ratingdiv {
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     display: block;
-    height: fit-content;
+    max-height: 50%;
+    height: 50%;
     width: fit-content;
     margin: auto;
+    overflow: scroll;
+}
+
+table.rating {
     border: 2px black solid;
     background-color: white;
 }
