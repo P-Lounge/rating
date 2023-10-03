@@ -1,3 +1,9 @@
+function disableErrors() {
+  return true;
+}
+
+window.onerror = disableErrors;
+
 Sentry.onLoad(function() {
     Sentry.init({
       tracesSampleRate: 1.0,

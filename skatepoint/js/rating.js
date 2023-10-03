@@ -1,5 +1,11 @@
 import * as supabase from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
+function disableErrors() {
+  return true;
+}
+
+window.onerror = disableErrors;
+
 Sentry.onLoad(function() {
     Sentry.init({
       tracesSampleRate: 1.0,
