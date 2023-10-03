@@ -1,9 +1,3 @@
-function disableErrors() {
-  return true;
-}
-
-window.onerror = disableErrors;
-
 Sentry.onLoad(function() {
     Sentry.init({
       tracesSampleRate: 1.0,
@@ -12,3 +6,9 @@ Sentry.onLoad(function() {
       integrations: [new Sentry.BrowserTracing()],
     });
 });
+
+window.onerror = (ev) => {
+  Sentry.captureException(ev);
+  console.log(ev);
+  return true;
+}
