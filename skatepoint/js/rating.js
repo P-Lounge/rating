@@ -1,6 +1,7 @@
 import * as supabase from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 window.onerror = (ev) => {
+  Sentry.captureException(ev);
   console.log(ev);
   return true;
 }
