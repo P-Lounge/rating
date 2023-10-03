@@ -1,5 +1,14 @@
 import * as supabase from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
+Sentry.onLoad(function() {
+    Sentry.init({
+      tracesSampleRate: 1.0,
+      replaysSessionSampleRate: 0.1,
+      replaysOnErrorSampleRate: 1.0,
+      integrations: [new Sentry.BrowserTracing()],
+    });
+});
+
 let client = supabase.createClient("https://lojzwaiquprqgcdnscob.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvanp3YWlxdXBycWdjZG5zY29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTU0MDUzMDEsImV4cCI6MjAxMDk4MTMwMX0.bv6iyLL_Q0ZS1437SRilQVn5rZbu-B_JIX5Ma0uYEwg");
 
 const { data, error } = await client.from('data').select().order('best_score', { ascending: false })
