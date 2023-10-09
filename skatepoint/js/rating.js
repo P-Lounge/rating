@@ -1,10 +1,10 @@
 import * as supabase from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-let client = supabase.createClient("https://lojzwaiquprqgcdnscob.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvanp3YWlxdXBycWdjZG5zY29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTU0MDUzMDEsImV4cCI6MjAxMDk4MTMwMX0.bv6iyLL_Q0ZS1437SRilQVn5rZbu-B_JIX5Ma0uYEwg");
-
 const sub = document.getElementsByClassName("notif")[0]
 
-var deviceId = undefined;
+console.log(Notification.permission)
+
+if (Notification.permission === "default") sub.style.display = "block";
 
 window.onerror = (ev) => {
   Sentry.captureException(ev);
@@ -12,16 +12,7 @@ window.onerror = (ev) => {
   return true;
 }
 
-var params = new URLSearchParams(window.location.search)
-if (params.has("deviceId")) {
-  deviceId = params.get("deviceId");
-  localStorage.setItem("deviceId", deviceId)
-  if (Notification.permission === "default") {
-    await client.from('subscriptions').delete().eq("device_id", deviceId)
-    sub.style.display = "block";
-  }
-  if (Notification.permission === "denied") await client.from('subscriptions').delete().eq("device_id", deviceId);
-}
+let client = supabase.createClient("https://lojzwaiquprqgcdnscob.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvanp3YWlxdXBycWdjZG5zY29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTU0MDUzMDEsImV4cCI6MjAxMDk4MTMwMX0.bv6iyLL_Q0ZS1437SRilQVn5rZbu-B_JIX5Ma0uYEwg");
 
 const { data, error } = await client.from('data').select().order('best_score', { ascending: false })
 const table = document.getElementsByClassName("rating")[0]
@@ -45,11 +36,9 @@ data.forEach(entry => {
 })
 
 sub.onclick = (ev) => {
-  Notification.requestPermission().then(async (result) => {
-    if (result === "granted") {
-      await client.from('subscriptions').insert([{"device_id": deviceId}])
-      new Notification("Thanks for subscribing!", { body: "We will notify you about changes to the rating!", icon: "./src/gameicon.png" })
-    }
+  Notification.requestPermission().then((result) => {
+    console.log(result)
+    let notif = new Notification("Thanks for subscribing!", { body: "We will notify you about changes to the rating!", icon: "./src/gameicon.png" })
     sub.style.display = "none";
   })
 }
