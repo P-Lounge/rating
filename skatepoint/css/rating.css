@@ -1,16 +1,16 @@
 body {
-    background-image: url("../../src/dialog.png");
+    background-image: url("../../src/dialog.svg");
     background-size: contain;
     user-select: none;
 }
 
 img.game {
-    scale: 0.7;
+    scale: 3;
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 75%;
+    bottom: 70%;
     margin: auto;
 }
 
@@ -27,6 +27,16 @@ div.game {
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: xx-large;
+}
+
+img.return {
+    scale: 3;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 80%;
+    bottom: 0;
+    margin: auto;
 }
 
 div.ratingdiv {
@@ -46,14 +56,13 @@ div.ratingdiv {
 table.rating {
     border: 2px black solid;
     background-color: white;
-    display: none;
 }
 
 th, td {
     border: 2px black solid;
 }
 
-div.button {
+div.return {
     position: fixed;
     left: 0;
     right: 0;
@@ -66,47 +75,8 @@ div.button {
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: xx-large;
-}
-
-img.button {
-    scale: 3;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 80%;
-    bottom: 0;
-    margin: auto;
-}
-
-div.subbutton {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 60%;
-    bottom: 0;
-    display: block;
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: xx-large;
-}
-
-img.subbutton {
-    scale: 3;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 60%;
-    bottom: 0;
-    margin: auto;
 }
 
 a {
     outline: 0;
-}
-
-a.notif {
-    display: none;
 }

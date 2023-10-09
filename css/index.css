@@ -1,5 +1,5 @@
 body {
-    background-image: url("../src/dialog.png");
+    background-image: url("../src/dialog.svg");
     background-size: contain;
     user-select: none;
 }

@@ -1,11 +1,5 @@
 import * as supabase from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-const sub = document.getElementsByClassName("notif")[0]
-
-console.log(Notification.permission)
-
-if (Notification.permission === "default") sub.style.display = "block";
-
 window.onerror = (ev) => {
   Sentry.captureException(ev);
   console.log(ev);
@@ -32,13 +26,4 @@ data.forEach(entry => {
     row.appendChild(last);
     row.appendChild(total);
     table.appendChild(row);
-    table.style.display = "block"
 })
-
-sub.onclick = (ev) => {
-  Notification.requestPermission().then((result) => {
-    console.log(result)
-    let notif = new Notification("Thanks for subscribing!", { body: "We will notify you about changes to the rating!", icon: "./src/gameicon.png" })
-    sub.style.display = "none";
-  })
-}
