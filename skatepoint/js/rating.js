@@ -44,16 +44,11 @@ data.forEach(entry => {
     table.style.display = "block"
 })
 
-const registerServiceWorker = async () => {
-  const swRegistration = await navigator.serviceWorker.register('./sw.js');
-  return swRegistration;
-}
-
 sub.onclick = (ev) => {
   Notification.requestPermission().then(async (result) => {
     if (result === "granted") {
-      await registerServiceWorker()
       await client.from('subscriptions').insert([{"device_id": deviceId}])
+      new Notification("Thanks for subscribing!", { body: "We will notify you about changes to the rating!", icon: "./src/gameicon.png" })
     }
     sub.style.display = "none";
   })
