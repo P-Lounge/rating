@@ -1,16 +1,16 @@
 body {
-    background-image: url("../../src/dialog.svg");
+    background-image: url("../../src/dialog.png");
     background-size: contain;
     user-select: none;
 }
 
 img.game {
-    scale: 3;
+    scale: 0.75;
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 70%;
+    bottom: 75%;
     margin: auto;
 }
 
